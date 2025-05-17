@@ -1,0 +1,480 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Animation utility classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.3s ease-in-out forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.3s ease-in-out forwards;
+}
+
+.slide-out-right {
+  animation: slideOutRight 0.3s ease-in-out forwards;
+}
+
+.slide-out-left {
+  animation: slideOutLeft 0.3s ease-in-out forwards;
+}
+
+.pulse-animation {
+  animation: pulse 0.5s ease-in-out;
+}
+
+.shake-animation {
+  animation: shake 0.5s ease-in-out;
+}
+
+.bounce-animation {
+  animation: bounce 0.5s ease-in-out;
+}
+
+.spin-animation {
+  animation: spin 1s linear infinite;
+}
+
+.pop-animation {
+  animation: pop 0.3s ease-in-out;
+}
+
+.float-animation {
+  animation: none;
+}
+
+.glow-animation {
+  animation: glow 1.5s ease-in-out infinite;
+}
+
+.shimmer-animation {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Component-specific animations */
+.like-button i {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.like-button:hover i {
+  transform: scale(1.2);
+}
+
+.like-button.liked i {
+  color: #ec4899;
+}
+
+.count-animation {
+  animation: pop 0.3s ease-in-out;
+}
+
+.button-pop {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button-pop:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.button-press-animation {
+  animation: pop 0.3s ease-in-out;
+}
+
+.focus-animation {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.focus-animation:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.focus-ring-animation {
+  animation: glow 1.5s ease-in-out;
+}
+
+.slide-in-animation {
+  animation: slideInRight 0.3s ease-in-out forwards;
+}
+
+.clear-animation {
+  animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+.nav-active {
+  color: #6366f1;
+  font-weight: 600;
+}
+
+.nav-pulse {
+  animation: pulse 0.5s ease-in-out;
+}
+
+/* Post animations */
+.post-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Comment animations */
+.comments-section {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+/* Profile image animations */
+.profile-image {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+  border-color: #6366f1;
+}
+
+/* Tag animations */
+.tag {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.tag:hover {
+  transform: translateY(-2px);
+  background-color: #e0e7ff;
+}
+
+/* Navigation animations */
+.nav-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav-icon:hover {
+  transform: scale(1.2);
+  color: #6366f1;
+}
+
+/* Search bar animations */
+.search-bar {
+  transition: width 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar:focus {
+  width: 110%;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Loading skeleton animation */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+/* Notification badge animation */
+.notification-badge {
+  animation: pulse 2s infinite;
+}
+
+/* Scroll animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Typing indicator animation */
+.typing-indicator {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(243, 244, 246, 0.8);
+  padding: 6px 12px;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  margin-bottom: 8px;
+}
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  margin: 0 1px;
+  background-color: #6366f1;
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 1s infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Heart animation for likes */
+@keyframes heart-burst {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.heart-animation {
+  animation: heart-burst 0.8s ease-in-out;
+}
+
+/* Floating labels for form inputs */
+.floating-label {
+  position: relative;
+}
+
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label {
+  transform: translateY(-20px) scale(0.85);
+  color: #6366f1;
+}
+
+.floating-label label {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  pointer-events: none;
+}
+
+/* Ripple effect for buttons */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.8s;
+}
+
+.ripple:active::after {
+  transform: scale(0, 0);
+  opacity: 0.3;
+  transition: 0s;
+}
+
+/* Strict no-scrollbar rules */
+* {
+  -ms-overflow-style: none !important;
+  /* IE and Edge */
+  scrollbar-width: none !important;
+  /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+  /* Chrome, Safari and Opera */
+}
+
+/* Improve section transitions */
+section {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+section[style*="display: block"] {
+  animation: fadeIn 0.3s ease-in-out;
+}

@@ -1,1577 +1,1418 @@
+<!DOCTYPE html>
 <html lang="en" x-data="{ dark: false }" :class="{ 'dark': dark }">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="theme-color" content="#ffffff">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#ffffff">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap"
-        rel="stylesheet">
+  <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap"
+    rel="stylesheet">
 
-    <title>SocialConnect</title>
-    <link rel="icon" type="image/x-icon" href="public/icon.ico">
-    <link rel="stylesheet" href="style.css">
+  <title>SocialConnect</title>
+  <link rel="icon" type="image/x-icon" href="public/icon.ico">
+  <link rel="stylesheet" href="globals.css">
 
-    <meta name="description"
-        content="Join SocialConnect, the elegant social media platform for sharing short thoughts and engaging in threaded discussions with a clean, minimalist interface.">
+  <meta name="description"
+    content="Join SocialConnect, the elegant social media platform for sharing short thoughts and engaging in threaded discussions with a clean, minimalist interface.">
 
-    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.45.1/apexcharts.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <script id="header-scripts">
-        if (window.scripts && window.scripts.head) {
-            document.getElementById('header-scripts').outerHTML = window.scripts.head;
-        }
-    </script>
-    <script>
-        window.projectConfig = {
-            name: 'SocialConnect',
-            type: '',
-            settings: {
-                colors: {
-                    primary: '#F8F8F8',
-                    secondary: '#FFFFFF',
-                    accent: '#6366f1'
-                },
-                fonts: {
-                    primary: 'Inter',
-                    secondary: 'DM Sans'
-                }
-            }
-        };
-    </script>
+  <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.45.1/apexcharts.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body id="root" class="antialiased text-gray-800 min-h-screen flex flex-col bg-gray-100 font-sans">
-    <div class="flex">
+  <div class="flex">
 
-        <nav id="layout"
-            class="bg-white h-16 w-screen fixed top-0 shadow-md hidden lg:flex justify-between items-center px-6 z-[1000] transition-all duration-300">
+    <nav id="layout"
+      class="bg-white h-16 w-screen fixed top-0 shadow-md hidden lg:flex justify-between items-center px-6 z-[1000] transition-all duration-300">
 
-            <!-- Left: Logo -->
-            <a href="#homeFeed"
-                class="flex items-center space-x-2 hover:scale-105 transition-transform duration-300 cursor-pointer">
+      <!-- Left: Logo -->
+      <a href="#homeFeed"
+        class="flex items-center space-x-2 hover:scale-105 transition-transform duration-300 cursor-pointer">
 
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-black" viewBox="0 0 20 20"
-                    fill="currentColor">
-                    <path fill-rule="evenodd"
-                        d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
-                        clip-rule="evenodd">
-                    </path>
-                </svg>
-                <h1 class="text-xl font-bold text-gray-800">SocialConnect</h1>
-            </a>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-black nav-icon" viewBox="0 0 20 20"
+          fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
+            clip-rule="evenodd">
+          </path>
+        </svg>
+        <h1 class="text-xl font-bold text-gray-800">SocialConnect</h1>
+      </a>
 
-            <!-- Center: Circle Button -->
-            <div
-                class="absolute left-1/2 rounded-full border border-4 border-white shadow-md transform -translate-x-1/2 translate-y-1/2 bottom-0">
-                <button
-                    class="w-12 h-12 rounded-full bg-gradient-to-r from-black to-gray-500 shadow-2xl hover:shadow-lg active:scale-95 transition transform duration-200">
-                    <a href="#exploreSection" class="w-12 h-12 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 20 20"
+      <!-- Center: Circle Button -->
+      <div
+        class="absolute left-1/2 rounded-full border border-4 border-white shadow-md transform -translate-x-1/2 translate-y-1/2 bottom-0 pulse-animation">
+        <button
+          class="w-12 h-12 rounded-full bg-gradient-to-r from-black to-gray-500 shadow-2xl hover:shadow-lg active:scale-95 transition transform duration-200 ripple">
+          <a href="#exploreSection" class="w-12 h-12 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white nav-icon" viewBox="0 0 20 20"
+              fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
+                clip-rule="evenodd">
+              </path>
+            </svg>
+          </a>
+        </button>
+      </div>
+
+      <!-- Right: User Info -->
+      <div class="flex items-center">
+        <a href="#profilePage"
+          class="flex items-center space-x-3 px-2 py-1 rounded-md transition duration-200 hover:bg-gray-50">
+          <div
+            class="profile-image h-10 w-10 rounded-full bg-gradient-to-r from-gray-400 to-black flex items-center justify-center text-white font-bold border-2 border-transparent hover:border-indigo-500 transition-all duration-300">
+            ME
+          </div>
+          <div class="text-sm leading-tight">
+            <p class="font-semibold text-gray-800">Nihal Awasthi</p>
+            <p class="text-xs text-gray-500">@nihalawasthi</p>
+          </div>
+          <div class="ml-2 h-2 w-2 rounded-full bg-green-500 notification-badge"></div>
+        </a>
+      </div>
+    </nav>
+
+    <main class="flex-1 pt-16 overflow-y-auto">
+      <section id="homeFeed" class="min-h-screen min-w-screen bg-gray-200 py-8 px-4 sm:px-6 lg:px-8"
+        style="display: block;">
+        <div class="max-w-4xl mx-auto">
+          <!-- Header with search -->
+          <div
+            class="sticky top-0 z-10 bg-white bg-opacity-90 backdrop-blur-sm rounded-2xl shadow-sm border border-gray-200 mb-6 p-4 transition-all duration-300 hover:shadow-md">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center flex-1 px-2 lg:px-0">
+                <div class="w-full max-w-lg lg:max-w-xs">
+                  <label for="search" class="sr-only">Search</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <svg class="h-5 w-5 text-gray-400 nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <input id="search" name="search"
+                      class="search-bar block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-full leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-all duration-300"
+                      placeholder="Search posts" type="search">
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <button type="button"
+                  class="bg-gradient-to-r from-gray-500 to-black p-1 rounded-full text-white hover:from-black hover:to-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 button-pop ripple">
+                  <svg class="h-6 w-6 nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Posts -->
+          <div id="postList" class="space-y-6">
+            <!-- Posts will be loaded here -->
+          </div>
+        </div>
+      </section>
+
+
+      <section id="profilePage" class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8" style="display: none;">
+        <div class="max-w-3xl mx-auto">
+          <!-- Profile Header -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden mb-6">
+            <div class="bg-[url('/public/pf.jpg')] bg-cover bg-no-repeat h-40">
+            </div>
+            <div class="px-6 pb-6">
+              <div class="flex flex-col items-center -mt-16">
+                <img src="public/me.jpeg" alt=""
+                  class="h-32 w-32 rounded-full border-4 border-white bg-gradient-to-r from-gray-500 to-black flex items-center justify-center text-white text-3xl font-bold shadow-md">
+                <h1 class="mt-4 text-2xl font-bold text-gray-900">Nihal Awasthi</h1>
+                <p class="text-gray-500">@nihalawasthi</p>
+                <p class="mt-2 text-center text-gray-600 max-w-md">
+                  Product designer and writer. Passionate about creating intuitive
+                  user experiences and exploring the intersection of design and
+                  technology.
+                </p>
+
+                <div class="mt-4 flex items-center space-x-2">
+                  <div class="flex items-center text-sm text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-400" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                      </path>
+                    </svg>
+                    <span>248 followers</span>
+                  </div>
+                  <span class="text-gray-300">•</span>
+                  <div class="flex items-center text-sm text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-400" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                      </path>
+                    </svg>
+                    <span>132 following</span>
+                  </div>
+                </div>
+
+                <div class="mt-6 flex space-x-3">
+                  <button type="button"
+                    class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Follow
+                  </button>
+                  <button type="button"
+                    class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Message
+                  </button>
+                  <button type="button"
+                    class="inline-flex items-center p-2 border border-gray-300 rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path
+                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
+                      </path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Tabs -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden mb-6">
+            <div class="border-b border-gray-200">
+              <nav class="-mb-px flex" aria-label="Tabs">
+                <button type="button"
+                  class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm active-tab border-indigo-500 text-indigo-600"
+                  data-tab="posts">
+                  Posts
+                </button>
+                <button type="button"
+                  class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                  data-tab="replies">
+                  Replies
+                </button>
+                <button type="button"
+                  class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                  data-tab="likes">
+                  Likes
+                </button>
+              </nav>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content" id="posts-content">
+              <div class="divide-y divide-gray-200">
+                <!-- Post 1 -->
+                <div class="p-6">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0 mr-4">
+                      <div
+                        class="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                        NA
+                      </div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between">
+                        <p class="text-sm font-medium text-gray-900">
+                          <a href="#" class="hover:underline">Nihal Awasthi</a>
+                        </p>
+                        <p class="text-sm text-gray-500">2 days ago</p>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-700">
+                        <p>Just published my case study on redesigning the
+                          onboarding experience for a fintech app. Reduced
+                          drop-off by 32% and increased conversion by 18%.
+                          Check it out!</p>
+                      </div>
+                      <div class="mt-2">
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                          #design
+                        </span>
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
+                          #ux
+                        </span>
+                      </div>
+                      <div class="mt-4 flex items-center space-x-6">
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200 group">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>87</span>
+                        </button>
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
                             fill="currentColor">
                             <path fill-rule="evenodd"
-                                d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
-                                clip-rule="evenodd">
+                              d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>24</span>
+                        </button>
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path
+                              d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z">
                             </path>
-                        </svg>
+                          </svg>
+                          <span>Share</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Post 2 with image -->
+                <div class="p-6">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0 mr-4">
+                      <div
+                        class="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                        NA
+                      </div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between">
+                        <p class="text-sm font-medium text-gray-900">
+                          <a href="#" class="hover:underline">Nihal Awasthi</a>
+                        </p>
+                        <p class="text-sm text-gray-500">5 days ago</p>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-700">
+                        <p>Excited to share my latest design exploration - a
+                          minimalist dashboard for personal finance
+                          tracking. Focused on clarity and simplicity.</p>
+                      </div>
+                      <div class="mt-3 rounded-xl overflow-hidden border border-gray-200">
+                        <div class="bg-gray-100 aspect-w-16 aspect-h-9 flex items-center justify-center">
+                          <div class="text-gray-400 text-sm">Image Preview
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mt-2">
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                          #design
+                        </span>
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
+                          #finance
+                        </span>
+                      </div>
+                      <div class="mt-4 flex items-center space-x-6">
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200 group">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>124</span>
+                        </button>
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>36</span>
+                        </button>
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path
+                              d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z">
+                            </path>
+                          </svg>
+                          <span>Share</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Post 3 -->
+                <div class="p-6">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0 mr-4">
+                      <div
+                        class="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                        NA
+                      </div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between">
+                        <p class="text-sm font-medium text-gray-900">
+                          <a href="#" class="hover:underline">Nihal Awasthi</a>
+                        </p>
+                        <p class="text-sm text-gray-500">1 week ago</p>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-700">
+                        <p>What's your favorite design tool in 2023? I'm
+                          still a Figma loyalist, but curious what others
+                          are using these days.</p>
+                      </div>
+                      <div class="mt-2">
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                          #design
+                        </span>
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
+                          #tools
+                        </span>
+                      </div>
+                      <div class="mt-4 flex items-center space-x-6">
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200 group">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>56</span>
+                        </button>
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>42</span>
+                        </button>
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path
+                              d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z">
+                            </path>
+                          </svg>
+                          <span>Share</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content hidden" id="replies-content">
+              <div class="p-8 text-center text-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                  </path>
+                </svg>
+                <h3 class="mt-2 text-sm font-medium text-gray-900">No replies yet
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">Start engaging with other
+                  posts to see your replies here.</p>
+              </div>
+            </div>
+
+            <div class="tab-content hidden" id="likes-content">
+              <div class="divide-y divide-gray-200">
+                <!-- Liked Post 1 -->
+                <div class="p-6">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0 mr-4">
+                      <div
+                        class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center text-white font-bold">
+                        AS
+                      </div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between">
+                        <p class="text-sm font-medium text-gray-900">
+                          <a href="#" class="hover:underline">Alex
+                            Smith</a>
+                        </p>
+                        <p class="text-sm text-gray-500">3 days ago</p>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-700">
+                        <p>Just launched my new portfolio website! Built
+                          with Next.js and Tailwind CSS. Would love some
+                          feedback from fellow designers and developers.
+                        </p>
+                      </div>
+                      <div class="mt-2">
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                          #webdev
+                        </span>
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
+                          #portfolio
+                        </span>
+                      </div>
+                      <div class="mt-4 flex items-center space-x-6">
+                        <button type="button"
+                          class="flex items-center text-sm text-indigo-600 transition-colors duration-200 group">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>78</span>
+                        </button>
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>18</span>
+                        </button>
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path
+                              d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z">
+                            </path>
+                          </svg>
+                          <span>Share</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Liked Post 2 -->
+                <div class="p-6">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0 mr-4">
+                      <div
+                        class="h-10 w-10 rounded-full bg-gradient-to-r from-green-400 to-teal-500 flex items-center justify-center text-white font-bold">
+                        MJ
+                      </div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between">
+                        <p class="text-sm font-medium text-gray-900">
+                          <a href="#" class="hover:underline">Morgan
+                            Johnson</a>
+                        </p>
+                        <p class="text-sm text-gray-500">1 week ago</p>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-700">
+                        <p>I've been experimenting with AI-generated art for
+                          my design projects. The results have been
+                          fascinating - here's a thread on what I've
+                          learned so far.</p>
+                      </div>
+                      <div class="mt-2">
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                          #ai
+                        </span>
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
+                          #design
+                        </span>
+                      </div>
+                      <div class="mt-4 flex items-center space-x-6">
+                        <button type="button"
+                          class="flex items-center text-sm text-indigo-600 transition-colors duration-200 group">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>142</span>
+                        </button>
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>64</span>
+                        </button>
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path
+                              d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z">
+                            </path>
+                          </svg>
+                          <span>Share</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Stats -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <div class="px-6 py-5 border-b border-gray-200">
+              <h3 class="text-lg font-medium text-gray-900">Activity Stats</h3>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-2 gap-6 sm:grid-cols-4">
+                <div class="bg-gray-50 rounded-lg p-4 text-center">
+                  <span class="text-2xl font-bold text-indigo-600">42</span>
+                  <p class="text-sm text-gray-500 mt-1">Posts</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 text-center">
+                  <span class="text-2xl font-bold text-indigo-600">156</span>
+                  <p class="text-sm text-gray-500 mt-1">Comments</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 text-center">
+                  <span class="text-2xl font-bold text-indigo-600">3.2K</span>
+                  <p class="text-sm text-gray-500 mt-1">Likes Received</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 text-center">
+                  <span class="text-2xl font-bold text-indigo-600">89</span>
+                  <p class="text-sm text-gray-500 mt-1">Days Active</p>
+                </div>
+              </div>
+
+              <div class="mt-6">
+                <h4 class="text-sm font-medium text-gray-900 mb-3">Most Active
+                  Topics</h4>
+                <div class="flex flex-wrap gap-2">
+                  <div
+                    class="px-3 py-1 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 rounded-full text-sm text-indigo-700">
+                    #design <span class="text-gray-500 text-xs">(24)</span>
+                  </div>
+                  <div
+                    class="px-3 py-1 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 rounded-full text-sm text-indigo-700">
+                    #ux <span class="text-gray-500 text-xs">(18)</span>
+                  </div>
+                  <div
+                    class="px-3 py-1 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 rounded-full text-sm text-indigo-700">
+                    #productivity <span class="text-gray-500 text-xs">(12)</span>
+                  </div>
+                  <div
+                    class="px-3 py-1 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 rounded-full text-sm text-indigo-700">
+                    #tools <span class="text-gray-500 text-xs">(9)</span>
+                  </div>
+                  <div
+                    class="px-3 py-1 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 rounded-full text-sm text-indigo-700">
+                    #ai <span class="text-gray-500 text-xs">(7)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JavaScript for Tab Switching -->
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+              button.addEventListener('click', function () {
+                const tabName = this.getAttribute('data-tab');
+
+                // Update active tab button
+                tabButtons.forEach(btn => {
+                  btn.classList.remove('active-tab', 'border-indigo-500', 'text-indigo-600');
+                  btn.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+                });
+
+                this.classList.add('active-tab', 'border-indigo-500', 'text-indigo-600');
+                this.classList.remove('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
+
+                // Show the selected tab content
+                tabContents.forEach(content => {
+                  content.classList.add('hidden');
+                });
+
+                document.getElementById(`${tabName}-content`).classList.remove('hidden');
+              });
+            });
+          });
+        </script>
+      </section>
+
+
+      <section id="exploreSection" class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8" style="display: none;">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Explore</h2>
+
+          <!-- Trending Topics -->
+          <div class="mb-8">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Trending Topics</h3>
+            <div class="flex flex-wrap gap-3">
+              <a href="#"
+                class="px-4 py-2 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 rounded-full text-sm font-medium text-indigo-700 hover:from-indigo-500/20 hover:to-purple-600/20 transition-all duration-200">
+                #design
+              </a>
+              <a href="#"
+                class="px-4 py-2 bg-gradient-to-r from-purple-500/10 to-pink-600/10 rounded-full text-sm font-medium text-purple-700 hover:from-purple-500/20 hover:to-pink-600/20 transition-all duration-200">
+                #ai
+              </a>
+              <a href="#"
+                class="px-4 py-2 bg-gradient-to-r from-blue-500/10 to-indigo-600/10 rounded-full text-sm font-medium text-blue-700 hover:from-blue-500/20 hover:to-indigo-600/20 transition-all duration-200">
+                #productivity
+              </a>
+              <a href="#"
+                class="px-4 py-2 bg-gradient-to-r from-green-500/10 to-teal-600/10 rounded-full text-sm font-medium text-green-700 hover:from-green-500/20 hover:to-teal-600/20 transition-all duration-200">
+                #books
+              </a>
+              <a href="#"
+                class="px-4 py-2 bg-gradient-to-r from-yellow-500/10 to-amber-600/10 rounded-full text-sm font-medium text-amber-700 hover:from-yellow-500/20 hover:to-amber-600/20 transition-all duration-200">
+                #technology
+              </a>
+              <a href="#"
+                class="px-4 py-2 bg-gradient-to-r from-red-500/10 to-rose-600/10 rounded-full text-sm font-medium text-red-700 hover:from-red-500/20 hover:to-rose-600/20 transition-all duration-200">
+                #startups
+              </a>
+              <a href="#"
+                class="px-4 py-2 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 rounded-full text-sm font-medium text-cyan-700 hover:from-cyan-500/20 hover:to-blue-600/20 transition-all duration-200">
+                #webdev
+              </a>
+              <a href="#"
+                class="px-4 py-2 bg-gradient-to-r from-fuchsia-500/10 to-purple-600/10 rounded-full text-sm font-medium text-fuchsia-700 hover:from-fuchsia-500/20 hover:to-purple-600/20 transition-all duration-200">
+                #creativity
+              </a>
+            </div>
+          </div>
+
+          <!-- Featured Threads -->
+          <div class="mb-10">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-medium text-gray-900">Featured Threads</h3>
+              <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-700">View
+                all</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Featured Thread 1 -->
+              <div
+                class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+                <div class="p-6">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0 mr-4">
+                      <div
+                        class="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                        TJ
+                      </div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between">
+                        <p class="text-sm font-medium text-gray-900">
+                          <a href="#" class="hover:underline">Taylor
+                            Johnson</a>
+                        </p>
+                        <p class="text-sm text-gray-500">2h ago</p>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-700">
+                        <p>The future of design systems in 2023: How
+                          component libraries are evolving with AI
+                          assistance and what it means for designers and
+                          developers.</p>
+                      </div>
+                      <div class="mt-2">
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                          #design
+                        </span>
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
+                          #ai
+                        </span>
+                      </div>
+                      <div class="mt-4 flex items-center space-x-6">
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200 group">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>128</span>
+                        </button>
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>42</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Featured Thread 2 -->
+              <div
+                class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+                <div class="p-6">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0 mr-4">
+                      <div
+                        class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold">
+                        AR
+                      </div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between">
+                        <p class="text-sm font-medium text-gray-900">
+                          <a href="#" class="hover:underline">Alex
+                            Rodriguez</a>
+                        </p>
+                        <p class="text-sm text-gray-500">1d ago</p>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-700">
+                        <p>I've read 52 books in 2023. Here are my top 5
+                          recommendations for anyone interested in
+                          psychology, productivity, and personal growth.
+                        </p>
+                      </div>
+                      <div class="mt-2">
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                          #books
+                        </span>
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
+                          #productivity
+                        </span>
+                      </div>
+                      <div class="mt-4 flex items-center space-x-6">
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200 group">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>95</span>
+                        </button>
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>36</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Featured Thread 3 -->
+              <div
+                class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md">
+                <div class="p-6">
+                  <div class="flex items-start">
+                    <div class="flex-shrink-0 mr-4">
+                      <div
+                        class="h-10 w-10 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold">
+                        SL
+                      </div>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center justify-between">
+                        <p class="text-sm font-medium text-gray-900">
+                          <a href="#" class="hover:underline">Sarah
+                            Lee</a>
+                        </p>
+                        <p class="text-sm text-gray-500">3d ago</p>
+                      </div>
+                      <div class="mt-2 text-sm text-gray-700">
+                        <p>How we built our startup's tech stack from
+                          scratch: lessons learned, tools we love, and
+                          what we'd do differently next time.</p>
+                      </div>
+                      <div class="mt-2">
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                          #startups
+                        </span>
+                        <span
+                          class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
+                          #technology
+                        </span>
+                      </div>
+                      <div class="mt-4 flex items-center space-x-6">
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200 group">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>76</span>
+                        </button>
+                        <button type="button"
+                          class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                              clip-rule="evenodd"></path>
+                          </svg>
+                          <span>29</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topic Explorer -->
+          <div class="mb-10">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Explore by Topic</h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <!-- Topic Card 1 -->
+              <div
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md group">
+                <div class="p-5">
+                  <div class="flex items-center mb-3">
+                    <div
+                      class="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <h4
+                      class="ml-3 text-base font-medium text-gray-900 group-hover:text-indigo-600 transition-colors duration-200">
+                      Design</h4>
+                  </div>
+                  <p class="text-sm text-gray-600">UI/UX, graphic design, design
+                    systems, and creative inspiration.</p>
+                  <div class="mt-3 flex items-center text-xs text-gray-500">
+                    <span>1.2K threads</span>
+                    <span class="mx-2">•</span>
+                    <span>4.5K members</span>
+                  </div>
+                  <div class="mt-4">
+                    <a href="#"
+                      class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700">
+                      Explore topic
+                      <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                          clip-rule="evenodd"></path>
+                      </svg>
                     </a>
-                </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Topic Card 2 -->
+              <div
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md group">
+                <div class="p-5">
+                  <div class="flex items-center mb-3">
+                    <div
+                      class="h-10 w-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <h4
+                      class="ml-3 text-base font-medium text-gray-900 group-hover:text-indigo-600 transition-colors duration-200">
+                      Productivity</h4>
+                  </div>
+                  <p class="text-sm text-gray-600">Time management, tools,
+                    workflows, and productivity systems.</p>
+                  <div class="mt-3 flex items-center text-xs text-gray-500">
+                    <span>856 threads</span>
+                    <span class="mx-2">•</span>
+                    <span>3.2K members</span>
+                  </div>
+                  <div class="mt-4">
+                    <a href="#"
+                      class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700">
+                      Explore topic
+                      <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Topic Card 3 -->
+              <div
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md group">
+                <div class="p-5">
+                  <div class="flex items-center mb-3">
+                    <div
+                      class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <h4
+                      class="ml-3 text-base font-medium text-gray-900 group-hover:text-indigo-600 transition-colors duration-200">
+                      Web Development</h4>
+                  </div>
+                  <p class="text-sm text-gray-600">Frontend, backend, frameworks,
+                    and modern web technologies.</p>
+                  <div class="mt-3 flex items-center text-xs text-gray-500">
+                    <span>1.5K threads</span>
+                    <span class="mx-2">•</span>
+                    <span>5.8K members</span>
+                  </div>
+                  <div class="mt-4">
+                    <a href="#"
+                      class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700">
+                      Explore topic
+                      <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Topic Card 4 -->
+              <div
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md group">
+                <div class="p-5">
+                  <div class="flex items-center mb-3">
+                    <div
+                      class="h-10 w-10 rounded-full bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                          d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z">
+                        </path>
+                      </svg>
+                    </div>
+                    <h4
+                      class="ml-3 text-base font-medium text-gray-900 group-hover:text-indigo-600 transition-colors duration-200">
+                      Books &amp; Reading</h4>
+                  </div>
+                  <p class="text-sm text-gray-600">Book recommendations, reading
+                    habits, and literary discussions.</p>
+                  <div class="mt-3 flex items-center text-xs text-gray-500">
+                    <span>742 threads</span>
+                    <span class="mx-2">•</span>
+                    <span>2.9K members</span>
+                  </div>
+                  <div class="mt-4">
+                    <a href="#"
+                      class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700">
+                      Explore topic
+                      <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Topic Card 5 -->
+              <div
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md group">
+                <div class="p-5">
+                  <div class="flex items-center mb-3">
+                    <div
+                      class="h-10 w-10 rounded-full bg-gradient-to-r from-yellow-500 to-amber-600 flex items-center justify-center text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <h4
+                      class="ml-3 text-base font-medium text-gray-900 group-hover:text-indigo-600 transition-colors duration-200">
+                      Artificial Intelligence</h4>
+                  </div>
+                  <p class="text-sm text-gray-600">AI tools, machine learning, and
+                    the future of technology.</p>
+                  <div class="mt-3 flex items-center text-xs text-gray-500">
+                    <span>1.1K threads</span>
+                    <span class="mx-2">•</span>
+                    <span>4.2K members</span>
+                  </div>
+                  <div class="mt-4">
+                    <a href="#"
+                      class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700">
+                      Explore topic
+                      <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Topic Card 6 -->
+              <div
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md group">
+                <div class="p-5">
+                  <div class="flex items-center mb-3">
+                    <div
+                      class="h-10 w-10 rounded-full bg-gradient-to-r from-red-500 to-rose-600 flex items-center justify-center text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                          d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z">
+                        </path>
+                      </svg>
+                    </div>
+                    <h4
+                      class="ml-3 text-base font-medium text-gray-900 group-hover:text-indigo-600 transition-colors duration-200">
+                      Startups &amp; Business</h4>
+                  </div>
+                  <p class="text-sm text-gray-600">Entrepreneurship, business
+                    strategy, and startup journeys.</p>
+                  <div class="mt-3 flex items-center text-xs text-gray-500">
+                    <span>925 threads</span>
+                    <span class="mx-2">•</span>
+                    <span>3.7K members</span>
+                  </div>
+                  <div class="mt-4">
+                    <a href="#"
+                      class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700">
+                      Explore topic
+                      <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                          d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- Right: User Info -->
-            <div class="flex items-center">
-                <a href="#profilePage" class="flex items-center space-x-3 px-2 py-1 rounded-md transition duration-200">
-                    <div
-                        class="h-10 w-10 rounded-full bg-gradient-to-r from-gray-400 to-black flex items-center justify-center text-white font-bold">
-                        ME
-                    </div>
-                    <div class="text-sm leading-tight">
-                        <p class="font-semibold text-gray-800">Nihal Awasthi</p>
-                        <p class="text-xs text-gray-500">@nihalawasthi</p>
-                    </div>
-                </a>
+            <div class="mt-6 text-center">
+              <button type="button"
+                class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                View all topics
+                <svg xmlns="http://www.w3.org/2000/svg" class="ml-1.5 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </button>
             </div>
-        </nav>
+          </div>
 
-        <main class="flex-1 pt-16 overflow-y-auto">
-            <section id="homeFeed" class="min-h-screen min-w-screen bg-gray-200 py-8 px-4 sm:px-6 lg:px-8"
-                style="display: block;">
-                <div class="max-w-4xl mx-auto">
-                    <!-- Header with search -->
+          <!-- People to Follow -->
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-medium text-gray-900">People to Follow</h3>
+              <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-700">View
+                all</a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <!-- Person 1 -->
+              <div
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md p-5">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
                     <div
-                        class="sticky top-0 z-10 bg-white bg-opacity-90 backdrop-blur-sm rounded-2xl shadow-sm border border-gray-200 mb-6 p-4">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center flex-1 px-2 lg:px-0">
-                                <div class="w-full max-w-lg lg:max-w-xs">
-                                    <label for="search" class="sr-only">Search</label>
-                                    <div class="relative">
-                                        <div
-                                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd"
-                                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </div>
-                                        <input id="search" name="search"
-                                            class="block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-full leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                            placeholder="Search posts" type="search">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <button type="button"
-                                    class="bg-gradient-to-r from-gray-500 to-black p-1 rounded-full text-white hover:from-black hover:to-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 4v16m8-8H4"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
+                      class="h-12 w-12 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                      NA
                     </div>
-
-                    <!-- Posts -->
-                    <div id="postList" class="space-y-6">
-                    </div>
+                  </div>
+                  <div class="ml-3">
+                    <h4 class="text-sm font-medium text-gray-900">Jessica Davis
+                    </h4>
+                    <p class="text-xs text-gray-500">UX Designer @Figma</p>
+                  </div>
                 </div>
-            </section>
-
-
-            <section id="profilePage" class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8" style="display: none;">
-                <div class="max-w-3xl mx-auto">
-                    <!-- Profile Header -->
-                    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden mb-6">
-                        <div class="bg-[url('/public/pf.jpg')] bg-cover bg-no-repeat h-40">
-                        </div>
-                        <div class="px-6 pb-6">
-                            <div class="flex flex-col items-center -mt-16">
-                                <img src="public/me.jpeg" alt=""
-                                    class="h-32 w-32 rounded-full border-4 border-white bg-gradient-to-r from-gray-500 to-black flex items-center justify-center text-white text-3xl font-bold shadow-md">
-                                <h1 class="mt-4 text-2xl font-bold text-gray-900">Nihal Awasthi</h1>
-                                <p class="text-gray-500">@nihalawasthi</p>
-                                <p class="mt-2 text-center text-gray-600 max-w-md">
-                                    Product designer and writer. Passionate about creating intuitive
-                                    user experiences and exploring the intersection of design and
-                                    technology.
-                                </p>
-
-                                <div class="mt-4 flex items-center space-x-2">
-                                    <div class="flex items-center text-sm text-gray-600">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-400"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
-                                            </path>
-                                        </svg>
-                                        <span>248 followers</span>
-                                    </div>
-                                    <span class="text-gray-300">•</span>
-                                    <div class="flex items-center text-sm text-gray-600">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-400"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
-                                            </path>
-                                        </svg>
-                                        <span>132 following</span>
-                                    </div>
-                                </div>
-
-                                <div class="mt-6 flex space-x-3">
-                                    <button type="button"
-                                        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                        Follow
-                                    </button>
-                                    <button type="button"
-                                        class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                        Message
-                                    </button>
-                                    <button type="button"
-                                        class="inline-flex items-center p-2 border border-gray-300 rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                            fill="currentColor">
-                                            <path
-                                                d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-                                            </path>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Profile Tabs -->
-                    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden mb-6">
-                        <div class="border-b border-gray-200">
-                            <nav class="-mb-px flex" aria-label="Tabs">
-                                <button type="button"
-                                    class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm active-tab border-indigo-500 text-indigo-600"
-                                    data-tab="posts">
-                                    Posts
-                                </button>
-                                <button type="button"
-                                    class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                                    data-tab="replies">
-                                    Replies
-                                </button>
-                                <button type="button"
-                                    class="tab-button w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                                    data-tab="likes">
-                                    Likes
-                                </button>
-                            </nav>
-                        </div>
-
-                        <!-- Tab Content -->
-                        <div class="tab-content" id="posts-content">
-                            <div class="divide-y divide-gray-200">
-                                <!-- Post 1 -->
-                                <div class="p-6">
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 mr-4">
-                                            <div
-                                                class="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold">
-                                                NA
-                                            </div>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <div class="flex items-center justify-between">
-                                                <p class="text-sm font-medium text-gray-900">
-                                                    <a href="#" class="hover:underline">Nihal Awasthi</a>
-                                                </p>
-                                                <p class="text-sm text-gray-500">2 days ago</p>
-                                            </div>
-                                            <div class="mt-2 text-sm text-gray-700">
-                                                <p>Just published my case study on redesigning the
-                                                    onboarding experience for a fintech app. Reduced
-                                                    drop-off by 32% and increased conversion by 18%.
-                                                    Check it out!</p>
-                                            </div>
-                                            <div class="mt-2">
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                                                    #design
-                                                </span>
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
-                                                    #ux
-                                                </span>
-                                            </div>
-                                            <div class="mt-4 flex items-center space-x-6">
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200 group">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>87</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>24</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path
-                                                            d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z">
-                                                        </path>
-                                                    </svg>
-                                                    <span>Share</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Post 2 with image -->
-                                <div class="p-6">
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 mr-4">
-                                            <div
-                                                class="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold">
-                                                NA
-                                            </div>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <div class="flex items-center justify-between">
-                                                <p class="text-sm font-medium text-gray-900">
-                                                    <a href="#" class="hover:underline">Nihal Awasthi</a>
-                                                </p>
-                                                <p class="text-sm text-gray-500">5 days ago</p>
-                                            </div>
-                                            <div class="mt-2 text-sm text-gray-700">
-                                                <p>Excited to share my latest design exploration - a
-                                                    minimalist dashboard for personal finance
-                                                    tracking. Focused on clarity and simplicity.</p>
-                                            </div>
-                                            <div class="mt-3 rounded-xl overflow-hidden border border-gray-200">
-                                                <div
-                                                    class="bg-gray-100 aspect-w-16 aspect-h-9 flex items-center justify-center">
-                                                    <div class="text-gray-400 text-sm">Image Preview
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-2">
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                                                    #design
-                                                </span>
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
-                                                    #finance
-                                                </span>
-                                            </div>
-                                            <div class="mt-4 flex items-center space-x-6">
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200 group">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>124</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>36</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path
-                                                            d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z">
-                                                        </path>
-                                                    </svg>
-                                                    <span>Share</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Post 3 -->
-                                <div class="p-6">
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 mr-4">
-                                            <div
-                                                class="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold">
-                                                NA
-                                            </div>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <div class="flex items-center justify-between">
-                                                <p class="text-sm font-medium text-gray-900">
-                                                    <a href="#" class="hover:underline">Nihal Awasthi</a>
-                                                </p>
-                                                <p class="text-sm text-gray-500">1 week ago</p>
-                                            </div>
-                                            <div class="mt-2 text-sm text-gray-700">
-                                                <p>What's your favorite design tool in 2023? I'm
-                                                    still a Figma loyalist, but curious what others
-                                                    are using these days.</p>
-                                            </div>
-                                            <div class="mt-2">
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                                                    #design
-                                                </span>
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
-                                                    #tools
-                                                </span>
-                                            </div>
-                                            <div class="mt-4 flex items-center space-x-6">
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200 group">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>56</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>42</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path
-                                                            d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z">
-                                                        </path>
-                                                    </svg>
-                                                    <span>Share</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-content hidden" id="replies-content">
-                            <div class="p-8 text-center text-gray-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
-                                    </path>
-                                </svg>
-                                <h3 class="mt-2 text-sm font-medium text-gray-900">No replies yet
-                                </h3>
-                                <p class="mt-1 text-sm text-gray-500">Start engaging with other
-                                    posts to see your replies here.</p>
-                            </div>
-                        </div>
-
-                        <div class="tab-content hidden" id="likes-content">
-                            <div class="divide-y divide-gray-200">
-                                <!-- Liked Post 1 -->
-                                <div class="p-6">
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 mr-4">
-                                            <div
-                                                class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center text-white font-bold">
-                                                AS
-                                            </div>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <div class="flex items-center justify-between">
-                                                <p class="text-sm font-medium text-gray-900">
-                                                    <a href="#" class="hover:underline">Alex
-                                                        Smith</a>
-                                                </p>
-                                                <p class="text-sm text-gray-500">3 days ago</p>
-                                            </div>
-                                            <div class="mt-2 text-sm text-gray-700">
-                                                <p>Just launched my new portfolio website! Built
-                                                    with Next.js and Tailwind CSS. Would love some
-                                                    feedback from fellow designers and developers.
-                                                </p>
-                                            </div>
-                                            <div class="mt-2">
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                                                    #webdev
-                                                </span>
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
-                                                    #portfolio
-                                                </span>
-                                            </div>
-                                            <div class="mt-4 flex items-center space-x-6">
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-indigo-600 transition-colors duration-200 group">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>78</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>18</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path
-                                                            d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z">
-                                                        </path>
-                                                    </svg>
-                                                    <span>Share</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Liked Post 2 -->
-                                <div class="p-6">
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 mr-4">
-                                            <div
-                                                class="h-10 w-10 rounded-full bg-gradient-to-r from-green-400 to-teal-500 flex items-center justify-center text-white font-bold">
-                                                MJ
-                                            </div>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <div class="flex items-center justify-between">
-                                                <p class="text-sm font-medium text-gray-900">
-                                                    <a href="#" class="hover:underline">Morgan
-                                                        Johnson</a>
-                                                </p>
-                                                <p class="text-sm text-gray-500">1 week ago</p>
-                                            </div>
-                                            <div class="mt-2 text-sm text-gray-700">
-                                                <p>I've been experimenting with AI-generated art for
-                                                    my design projects. The results have been
-                                                    fascinating - here's a thread on what I've
-                                                    learned so far.</p>
-                                            </div>
-                                            <div class="mt-2">
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                                                    #ai
-                                                </span>
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
-                                                    #design
-                                                </span>
-                                            </div>
-                                            <div class="mt-4 flex items-center space-x-6">
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-indigo-600 transition-colors duration-200 group">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>142</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>64</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path
-                                                            d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z">
-                                                        </path>
-                                                    </svg>
-                                                    <span>Share</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Profile Stats -->
-                    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-                        <div class="px-6 py-5 border-b border-gray-200">
-                            <h3 class="text-lg font-medium text-gray-900">Activity Stats</h3>
-                        </div>
-                        <div class="p-6">
-                            <div class="grid grid-cols-2 gap-6 sm:grid-cols-4">
-                                <div class="bg-gray-50 rounded-lg p-4 text-center">
-                                    <span class="text-2xl font-bold text-indigo-600">42</span>
-                                    <p class="text-sm text-gray-500 mt-1">Posts</p>
-                                </div>
-                                <div class="bg-gray-50 rounded-lg p-4 text-center">
-                                    <span class="text-2xl font-bold text-indigo-600">156</span>
-                                    <p class="text-sm text-gray-500 mt-1">Comments</p>
-                                </div>
-                                <div class="bg-gray-50 rounded-lg p-4 text-center">
-                                    <span class="text-2xl font-bold text-indigo-600">3.2K</span>
-                                    <p class="text-sm text-gray-500 mt-1">Likes Received</p>
-                                </div>
-                                <div class="bg-gray-50 rounded-lg p-4 text-center">
-                                    <span class="text-2xl font-bold text-indigo-600">89</span>
-                                    <p class="text-sm text-gray-500 mt-1">Days Active</p>
-                                </div>
-                            </div>
-
-                            <div class="mt-6">
-                                <h4 class="text-sm font-medium text-gray-900 mb-3">Most Active
-                                    Topics</h4>
-                                <div class="flex flex-wrap gap-2">
-                                    <div
-                                        class="px-3 py-1 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 rounded-full text-sm text-indigo-700">
-                                        #design <span class="text-gray-500 text-xs">(24)</span>
-                                    </div>
-                                    <div
-                                        class="px-3 py-1 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 rounded-full text-sm text-indigo-700">
-                                        #ux <span class="text-gray-500 text-xs">(18)</span>
-                                    </div>
-                                    <div
-                                        class="px-3 py-1 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 rounded-full text-sm text-indigo-700">
-                                        #productivity <span class="text-gray-500 text-xs">(12)</span>
-                                    </div>
-                                    <div
-                                        class="px-3 py-1 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 rounded-full text-sm text-indigo-700">
-                                        #tools <span class="text-gray-500 text-xs">(9)</span>
-                                    </div>
-                                    <div
-                                        class="px-3 py-1 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 rounded-full text-sm text-indigo-700">
-                                        #ai <span class="text-gray-500 text-xs">(7)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <p class="mt-3 text-xs text-gray-600">Sharing insights on design
+                  systems and product thinking.</p>
+                <div class="mt-4 flex justify-between items-center">
+                  <span class="text-xs text-gray-500">4.2K followers</span>
+                  <button type="button"
+                    class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Follow
+                  </button>
                 </div>
+              </div>
 
-                <!-- JavaScript for Tab Switching -->
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        const tabButtons = document.querySelectorAll('.tab-button');
-                        const tabContents = document.querySelectorAll('.tab-content');
-
-                        tabButtons.forEach(button => {
-                            button.addEventListener('click', function () {
-                                const tabName = this.getAttribute('data-tab');
-
-                                // Update active tab button
-                                tabButtons.forEach(btn => {
-                                    btn.classList.remove('active-tab', 'border-indigo-500', 'text-indigo-600');
-                                    btn.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
-                                });
-
-                                this.classList.add('active-tab', 'border-indigo-500', 'text-indigo-600');
-                                this.classList.remove('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
-
-                                // Show the selected tab content
-                                tabContents.forEach(content => {
-                                    content.classList.add('hidden');
-                                });
-
-                                document.getElementById(`${tabName}-content`).classList.remove('hidden');
-                            });
-                        });
-                    });
-                </script>
-            </section>
-
-
-            <section id="exploreSection" class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8"
-                style="display: none;">
-                <div class="max-w-6xl mx-auto">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Explore</h2>
-
-                    <!-- Trending Topics -->
-                    <div class="mb-8">
-                        <h3 class="text-lg font-medium text-gray-900 mb-4">Trending Topics</h3>
-                        <div class="flex flex-wrap gap-3">
-                            <a href="#"
-                                class="px-4 py-2 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 rounded-full text-sm font-medium text-indigo-700 hover:from-indigo-500/20 hover:to-purple-600/20 transition-all duration-200">
-                                #design
-                            </a>
-                            <a href="#"
-                                class="px-4 py-2 bg-gradient-to-r from-purple-500/10 to-pink-600/10 rounded-full text-sm font-medium text-purple-700 hover:from-purple-500/20 hover:to-pink-600/20 transition-all duration-200">
-                                #ai
-                            </a>
-                            <a href="#"
-                                class="px-4 py-2 bg-gradient-to-r from-blue-500/10 to-indigo-600/10 rounded-full text-sm font-medium text-blue-700 hover:from-blue-500/20 hover:to-indigo-600/20 transition-all duration-200">
-                                #productivity
-                            </a>
-                            <a href="#"
-                                class="px-4 py-2 bg-gradient-to-r from-green-500/10 to-teal-600/10 rounded-full text-sm font-medium text-green-700 hover:from-green-500/20 hover:to-teal-600/20 transition-all duration-200">
-                                #books
-                            </a>
-                            <a href="#"
-                                class="px-4 py-2 bg-gradient-to-r from-yellow-500/10 to-amber-600/10 rounded-full text-sm font-medium text-amber-700 hover:from-yellow-500/20 hover:to-amber-600/20 transition-all duration-200">
-                                #technology
-                            </a>
-                            <a href="#"
-                                class="px-4 py-2 bg-gradient-to-r from-red-500/10 to-rose-600/10 rounded-full text-sm font-medium text-red-700 hover:from-red-500/20 hover:to-rose-600/20 transition-all duration-200">
-                                #startups
-                            </a>
-                            <a href="#"
-                                class="px-4 py-2 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 rounded-full text-sm font-medium text-cyan-700 hover:from-cyan-500/20 hover:to-blue-600/20 transition-all duration-200">
-                                #webdev
-                            </a>
-                            <a href="#"
-                                class="px-4 py-2 bg-gradient-to-r from-fuchsia-500/10 to-purple-600/10 rounded-full text-sm font-medium text-fuchsia-700 hover:from-fuchsia-500/20 hover:to-purple-600/20 transition-all duration-200">
-                                #creativity
-                            </a>
-                        </div>
+              <!-- Person 2 -->
+              <div
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md p-5">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <div
+                      class="h-12 w-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold">
+                      MR
                     </div>
-
-                    <!-- Featured Threads -->
-                    <div class="mb-10">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-lg font-medium text-gray-900">Featured Threads</h3>
-                            <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-700">View
-                                all</a>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- Featured Thread 1 -->
-                            <div
-                                class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md">
-                                <div class="p-6">
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 mr-4">
-                                            <div
-                                                class="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold">
-                                                TJ
-                                            </div>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <div class="flex items-center justify-between">
-                                                <p class="text-sm font-medium text-gray-900">
-                                                    <a href="#" class="hover:underline">Taylor
-                                                        Johnson</a>
-                                                </p>
-                                                <p class="text-sm text-gray-500">2h ago</p>
-                                            </div>
-                                            <div class="mt-2 text-sm text-gray-700">
-                                                <p>The future of design systems in 2023: How
-                                                    component libraries are evolving with AI
-                                                    assistance and what it means for designers and
-                                                    developers.</p>
-                                            </div>
-                                            <div class="mt-2">
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                                                    #design
-                                                </span>
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
-                                                    #ai
-                                                </span>
-                                            </div>
-                                            <div class="mt-4 flex items-center space-x-6">
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200 group">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>128</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>42</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Featured Thread 2 -->
-                            <div
-                                class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md">
-                                <div class="p-6">
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 mr-4">
-                                            <div
-                                                class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold">
-                                                AR
-                                            </div>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <div class="flex items-center justify-between">
-                                                <p class="text-sm font-medium text-gray-900">
-                                                    <a href="#" class="hover:underline">Alex
-                                                        Rodriguez</a>
-                                                </p>
-                                                <p class="text-sm text-gray-500">1d ago</p>
-                                            </div>
-                                            <div class="mt-2 text-sm text-gray-700">
-                                                <p>I've read 52 books in 2023. Here are my top 5
-                                                    recommendations for anyone interested in
-                                                    psychology, productivity, and personal growth.
-                                                </p>
-                                            </div>
-                                            <div class="mt-2">
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                                                    #books
-                                                </span>
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
-                                                    #productivity
-                                                </span>
-                                            </div>
-                                            <div class="mt-4 flex items-center space-x-6">
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200 group">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>95</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>36</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Featured Thread 3 -->
-                            <div
-                                class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md">
-                                <div class="p-6">
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 mr-4">
-                                            <div
-                                                class="h-10 w-10 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold">
-                                                SL
-                                            </div>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <div class="flex items-center justify-between">
-                                                <p class="text-sm font-medium text-gray-900">
-                                                    <a href="#" class="hover:underline">Sarah
-                                                        Lee</a>
-                                                </p>
-                                                <p class="text-sm text-gray-500">3d ago</p>
-                                            </div>
-                                            <div class="mt-2 text-sm text-gray-700">
-                                                <p>How we built our startup's tech stack from
-                                                    scratch: lessons learned, tools we love, and
-                                                    what we'd do differently next time.</p>
-                                            </div>
-                                            <div class="mt-2">
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                                                    #startups
-                                                </span>
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 ml-2">
-                                                    #technology
-                                                </span>
-                                            </div>
-                                            <div class="mt-4 flex items-center space-x-6">
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200 group">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="h-5 w-5 mr-1.5 group-hover:scale-110 transition-transform duration-200"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>76</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="flex items-center text-sm text-gray-500 hover:text-indigo-600 transition-colors duration-200">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5"
-                                                        viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd"
-                                                            d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span>29</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Topic Explorer -->
-                    <div class="mb-10">
-                        <h3 class="text-lg font-medium text-gray-900 mb-4">Explore by Topic</h3>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                            <!-- Topic Card 1 -->
-                            <div
-                                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md group">
-                                <div class="p-5">
-                                    <div class="flex items-center mb-3">
-                                        <div
-                                            class="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                                fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </div>
-                                        <h4
-                                            class="ml-3 text-base font-medium text-gray-900 group-hover:text-indigo-600 transition-colors duration-200">
-                                            Design</h4>
-                                    </div>
-                                    <p class="text-sm text-gray-600">UI/UX, graphic design, design
-                                        systems, and creative inspiration.</p>
-                                    <div class="mt-3 flex items-center text-xs text-gray-500">
-                                        <span>1.2K threads</span>
-                                        <span class="mx-2">•</span>
-                                        <span>4.5K members</span>
-                                    </div>
-                                    <div class="mt-4">
-                                        <a href="#"
-                                            class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700">
-                                            Explore topic
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4"
-                                                viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Topic Card 2 -->
-                            <div
-                                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md group">
-                                <div class="p-5">
-                                    <div class="flex items-center mb-3">
-                                        <div
-                                            class="h-10 w-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center text-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                                fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </div>
-                                        <h4
-                                            class="ml-3 text-base font-medium text-gray-900 group-hover:text-indigo-600 transition-colors duration-200">
-                                            Productivity</h4>
-                                    </div>
-                                    <p class="text-sm text-gray-600">Time management, tools,
-                                        workflows, and productivity systems.</p>
-                                    <div class="mt-3 flex items-center text-xs text-gray-500">
-                                        <span>856 threads</span>
-                                        <span class="mx-2">•</span>
-                                        <span>3.2K members</span>
-                                    </div>
-                                    <div class="mt-4">
-                                        <a href="#"
-                                            class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700">
-                                            Explore topic
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4"
-                                                viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Topic Card 3 -->
-                            <div
-                                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md group">
-                                <div class="p-5">
-                                    <div class="flex items-center mb-3">
-                                        <div
-                                            class="h-10 w-10 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center text-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                                fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </div>
-                                        <h4
-                                            class="ml-3 text-base font-medium text-gray-900 group-hover:text-indigo-600 transition-colors duration-200">
-                                            Web Development</h4>
-                                    </div>
-                                    <p class="text-sm text-gray-600">Frontend, backend, frameworks,
-                                        and modern web technologies.</p>
-                                    <div class="mt-3 flex items-center text-xs text-gray-500">
-                                        <span>1.5K threads</span>
-                                        <span class="mx-2">•</span>
-                                        <span>5.8K members</span>
-                                    </div>
-                                    <div class="mt-4">
-                                        <a href="#"
-                                            class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700">
-                                            Explore topic
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4"
-                                                viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Topic Card 4 -->
-                            <div
-                                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md group">
-                                <div class="p-5">
-                                    <div class="flex items-center mb-3">
-                                        <div
-                                            class="h-10 w-10 rounded-full bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center text-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                                fill="currentColor">
-                                                <path
-                                                    d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z">
-                                                </path>
-                                            </svg>
-                                        </div>
-                                        <h4
-                                            class="ml-3 text-base font-medium text-gray-900 group-hover:text-indigo-600 transition-colors duration-200">
-                                            Books &amp; Reading</h4>
-                                    </div>
-                                    <p class="text-sm text-gray-600">Book recommendations, reading
-                                        habits, and literary discussions.</p>
-                                    <div class="mt-3 flex items-center text-xs text-gray-500">
-                                        <span>742 threads</span>
-                                        <span class="mx-2">•</span>
-                                        <span>2.9K members</span>
-                                    </div>
-                                    <div class="mt-4">
-                                        <a href="#"
-                                            class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700">
-                                            Explore topic
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4"
-                                                viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Topic Card 5 -->
-                            <div
-                                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md group">
-                                <div class="p-5">
-                                    <div class="flex items-center mb-3">
-                                        <div
-                                            class="h-10 w-10 rounded-full bg-gradient-to-r from-yellow-500 to-amber-600 flex items-center justify-center text-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                                fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </div>
-                                        <h4
-                                            class="ml-3 text-base font-medium text-gray-900 group-hover:text-indigo-600 transition-colors duration-200">
-                                            Artificial Intelligence</h4>
-                                    </div>
-                                    <p class="text-sm text-gray-600">AI tools, machine learning, and
-                                        the future of technology.</p>
-                                    <div class="mt-3 flex items-center text-xs text-gray-500">
-                                        <span>1.1K threads</span>
-                                        <span class="mx-2">•</span>
-                                        <span>4.2K members</span>
-                                    </div>
-                                    <div class="mt-4">
-                                        <a href="#"
-                                            class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700">
-                                            Explore topic
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4"
-                                                viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Topic Card 6 -->
-                            <div
-                                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md group">
-                                <div class="p-5">
-                                    <div class="flex items-center mb-3">
-                                        <div
-                                            class="h-10 w-10 rounded-full bg-gradient-to-r from-red-500 to-rose-600 flex items-center justify-center text-white">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                                fill="currentColor">
-                                                <path
-                                                    d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z">
-                                                </path>
-                                            </svg>
-                                        </div>
-                                        <h4
-                                            class="ml-3 text-base font-medium text-gray-900 group-hover:text-indigo-600 transition-colors duration-200">
-                                            Startups &amp; Business</h4>
-                                    </div>
-                                    <p class="text-sm text-gray-600">Entrepreneurship, business
-                                        strategy, and startup journeys.</p>
-                                    <div class="mt-3 flex items-center text-xs text-gray-500">
-                                        <span>925 threads</span>
-                                        <span class="mx-2">•</span>
-                                        <span>3.7K members</span>
-                                    </div>
-                                    <div class="mt-4">
-                                        <a href="#"
-                                            class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700">
-                                            Explore topic
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4"
-                                                viewBox="0 0 20 20" fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-6 text-center">
-                            <button type="button"
-                                class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                View all topics
-                                <svg xmlns="http://www.w3.org/2000/svg" class="ml-1.5 h-4 w-4" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- People to Follow -->
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-lg font-medium text-gray-900">People to Follow</h3>
-                            <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-700">View
-                                all</a>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                            <!-- Person 1 -->
-                            <div
-                                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md p-5">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0">
-                                        <div
-                                            class="h-12 w-12 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold">
-                                            NA
-                                        </div>
-                                    </div>
-                                    <div class="ml-3">
-                                        <h4 class="text-sm font-medium text-gray-900">Jessica Davis
-                                        </h4>
-                                        <p class="text-xs text-gray-500">UX Designer @Figma</p>
-                                    </div>
-                                </div>
-                                <p class="mt-3 text-xs text-gray-600">Sharing insights on design
-                                    systems and product thinking.</p>
-                                <div class="mt-4 flex justify-between items-center">
-                                    <span class="text-xs text-gray-500">4.2K followers</span>
-                                    <button type="button"
-                                        class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                        Follow
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Person 2 -->
-                            <div
-                                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md p-5">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0">
-                                        <div
-                                            class="h-12 w-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold">
-                                            MR
-                                        </div>
-                                    </div>
-                                    <div class="ml-3">
-                                        <h4 class="text-sm font-medium text-gray-900">Michael
-                                            Rodriguez</h4>
-                                        <p class="text-xs text-gray-500">Frontend Developer</p>
-                                    </div>
-                                </div>
-                                <p class="mt-3 text-xs text-gray-600">Web performance, React, and
-                                    modern JavaScript techniques.</p>
-                                <div class="mt-4 flex justify-between items-center">
-                                    <span class="text-xs text-gray-500">2.8K followers</span>
-                                    <button type="button"
-                                        class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                        Follow
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Person 3 -->
-                            <div
-                                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md p-5">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0">
-                                        <div
-                                            class="h-12 w-12 rounded-full bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center text-white font-bold">
-                                            AK
-                                        </div>
-                                    </div>
-                                    <div class="ml-3">
-                                        <h4 class="text-sm font-medium text-gray-900">Aisha Khan
-                                        </h4>
-                                        <p class="text-xs text-gray-500">Product Manager @Stripe</p>
-                                    </div>
-                                </div>
-                                <p class="mt-3 text-xs text-gray-600">Building products people love.
-                                    Sharing PM frameworks and tools.</p>
-                                <div class="mt-4 flex justify-between items-center">
-                                    <span class="text-xs text-gray-500">5.6K followers</span>
-                                    <button type="button"
-                                        class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                        Follow
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Person 4 -->
-                            <div
-                                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md p-5">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0">
-                                        <div
-                                            class="h-12 w-12 rounded-full bg-gradient-to-r from-yellow-500 to-amber-600 flex items-center justify-center text-white font-bold">
-                                            TN
-                                        </div>
-                                    </div>
-                                    <div class="ml-3">
-                                        <h4 class="text-sm font-medium text-gray-900">Thomas Nguyen
-                                        </h4>
-                                        <p class="text-xs text-gray-500">AI Researcher</p>
-                                    </div>
-                                </div>
-                                <p class="mt-3 text-xs text-gray-600">Exploring the intersection of
-                                    AI and creativity. ML enthusiast.</p>
-                                <div class="mt-4 flex justify-between items-center">
-                                    <span class="text-xs text-gray-500">3.1K followers</span>
-                                    <button type="button"
-                                        class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                        Follow
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
+                  <div class="ml-3">
+                    <h4 class="text-sm font-medium text-gray-900">Michael
+                      Rodriguez</h4>
+                    <p class="text-xs text-gray-500">Frontend Developer</p>
+                  </div>
                 </div>
-            </section>
-        </main>
-    </div>
+                <p class="mt-3 text-xs text-gray-600">Web performance, React, and
+                  modern JavaScript techniques.</p>
+                <div class="mt-4 flex justify-between items-center">
+                  <span class="text-xs text-gray-500">2.8K followers</span>
+                  <button type="button"
+                    class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Follow
+                  </button>
+                </div>
+              </div>
 
+              <!-- Person 3 -->
+              <div
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md p-5">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <div
+                      class="h-12 w-12 rounded-full bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center text-white font-bold">
+                      AK
+                    </div>
+                  </div>
+                  <div class="ml-3">
+                    <h4 class="text-sm font-medium text-gray-900">Aisha Khan
+                    </h4>
+                    <p class="text-xs text-gray-500">Product Manager @Stripe</p>
+                  </div>
+                </div>
+                <p class="mt-3 text-xs text-gray-600">Building products people love.
+                  Sharing PM frameworks and tools.</p>
+                <div class="mt-4 flex justify-between items-center">
+                  <span class="text-xs text-gray-500">5.6K followers</span>
+                  <button type="button"
+                    class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Follow
+                  </button>
+                </div>
+              </div>
 
-    <!--Load Posts-->
-    <script src="script.js"></script>
-    <!-- Core functionality scripts -->
-    <script>
-        // Initialize interactive elements
-        document.addEventListener('DOMContentLoaded', function () {
-            // Add interactive behaviors
-            const interactiveElements = document.querySelectorAll('.interactive-element');
-            interactiveElements.forEach(element => {
-                element.addEventListener('mouseenter', () => {
-                    element.classList.add('hover');
-                });
-                element.addEventListener('mouseleave', () => {
-                    element.classList.remove('hover');
-                });
-            });
+              <!-- Person 4 -->
+              <div
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-md p-5">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <div
+                      class="h-12 w-12 rounded-full bg-gradient-to-r from-yellow-500 to-amber-600 flex items-center justify-center text-white font-bold">
+                      TN
+                    </div>
+                  </div>
+                  <div class="ml-3">
+                    <h4 class="text-sm font-medium text-gray-900">Thomas Nguyen
+                    </h4>
+                    <p class="text-xs text-gray-500">AI Researcher</p>
+                  </div>
+                </div>
+                <p class="mt-3 text-xs text-gray-600">Exploring the intersection of
+                  AI and creativity. ML enthusiast.</p>
+                <div class="mt-4 flex justify-between items-center">
+                  <span class="text-xs text-gray-500">3.1K followers</span>
+                  <button type="button"
+                    class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Follow
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 
-            // Initialize any dynamic content
-            const dynamicContent = document.querySelectorAll('[data-dynamic]');
-            dynamicContent.forEach(content => {
-                // Add fade-in animation
-                content.classList.add('fade-in');
-            });
-        });
+  <!--Load Posts-->
+  <script src="./script.js"></script>
 
-        // Handle navigation
-        function handleNavigation(event) {
-            const link = event.currentTarget;
-            if (link.hasAttribute('data-nav')) {
-                event.preventDefault();
-                const target = link.getAttribute('data-nav');
-                document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
-            }
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Remove floating animations
+      document.querySelectorAll('.profile-image').forEach(img => {
+        img.classList.remove('float-animation');
+      });
+
+      document.querySelectorAll('.nav-icon').forEach(icon => {
+        icon.classList.remove('float-animation');
+      });
+
+      // Fix page transitions
+      const allSections = document.querySelectorAll('main section');
+
+      function showSection(sectionId) {
+        // Find all sections
+        const currentSection = Array.from(allSections).find(section =>
+          section.style.display === 'block' || getComputedStyle(section).display === 'block'
+        );
+        const currentSectionId = currentSection?.id;
+
+        // Get the target section
+        const targetSection = document.getElementById(sectionId);
+        if (!targetSection) return;
+
+        // Determine animation direction
+        const sectionIds = Array.from(allSections).map(section => section.id);
+        const currentIndex = sectionIds.indexOf(currentSectionId);
+        const targetIndex = sectionIds.indexOf(sectionId);
+        const direction = targetIndex > currentIndex ? 'right' : 'left';
+
+        // Hide current section with animation
+        if (currentSection) {
+          currentSection.style.opacity = '0';
+          currentSection.style.transform = direction === 'right' ? 'translateX(-30px)' : 'translateX(30px)';
+
+          setTimeout(() => {
+            currentSection.style.display = 'none';
+            currentSection.style.transform = '';
+
+            // Show target section with animation
+            targetSection.style.display = 'block';
+            targetSection.style.opacity = '0';
+            targetSection.style.transform = direction === 'right' ? 'translateX(30px)' : 'translateX(-30px)';
+
+            setTimeout(() => {
+              targetSection.style.opacity = '1';
+              targetSection.style.transform = 'translateX(0)';
+            }, 50);
+          }, 300);
+        } else {
+          // No current section, just show the target
+          targetSection.style.display = 'block';
+          targetSection.style.opacity = '0';
+          setTimeout(() => {
+            targetSection.style.opacity = '1';
+          }, 50);
         }
 
-        // Initialize navigation
-        document.querySelectorAll('[data-nav]').forEach(link => {
-            link.addEventListener('click', handleNavigation);
+        // Update active states in navigation
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+          const linkTarget = link.getAttribute('href').substring(1);
+          if (linkTarget === sectionId) {
+            link.classList.add('nav-active');
+          } else {
+            link.classList.remove('nav-active');
+          }
         });
-    </script>
+      }
 
-    <!-- Body Scripts -->
-    <script id="body-scripts">
-        // This script tag will be replaced with actual scripts.body content
-        if (window.scripts && window.scripts.body) {
-            document.getElementById('body-scripts').outerHTML = window.scripts.body;
+      // Handle hash changes
+      window.addEventListener('hashchange', function () {
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+          showSection(hash);
         }
-    </script>
+      });
 
-    <script>
-        // Debug logging helper
-        const debugLog = (context, data) => {
-            console.log("[SPA Navigation] " + context + ":", data);
-        };
+      // Set up delegation for navigation clicks
+      document.addEventListener('click', function (event) {
+        const targetElement = event.target.closest('a');
 
-        debugLog('Initializing', { projectType: 'webapp' });
+        if (targetElement && targetElement.getAttribute('href') && targetElement.getAttribute('href').startsWith('#')) {
+          const sectionId = targetElement.getAttribute('href').substring(1);
 
-        // Function to show the selected section and hide others
-        function showSection(sectionId) {
-            debugLog('Showing section', { sectionId });
-
-            // Find all sections that could be page content
-            const allSections = document.querySelectorAll('main section');
-            debugLog('Found sections', {
-                count: allSections.length,
-                ids: Array.from(allSections).map(s => s.id)
-            });
-
-            // Hide all sections
-            allSections.forEach(section => {
-                section.style.display = 'none';
-            });
-
-            // Show the requested section
+          if (sectionId) {
             const targetSection = document.getElementById(sectionId);
             if (targetSection) {
-                debugLog('Target section found', { id: sectionId });
-                targetSection.style.display = 'block';
-            } else {
-                debugLog('Target section not found', { id: sectionId });
-                // If section not found and there are sections, show the first one
-                if (allSections.length > 0) {
-                    const firstSection = allSections[0];
-                    debugLog('Showing first section instead', { id: firstSection.id });
-                    firstSection.style.display = 'block';
-                }
+              event.preventDefault();
+              window.location.hash = sectionId;
+              showSection(sectionId);
             }
-
-            // Update active states in any navigation
-            updateNavActiveStates(sectionId);
+          }
         }
+      });
 
-        // Handle hash changes
-        window.addEventListener('hashchange', function () {
-            const hash = window.location.hash.substring(1);
-            debugLog('Hash changed', { hash });
-            if (hash) {
-                showSection(hash);
-            }
-        });
-
-        // Handle initial page load
-        function handleInitialLoad() {
-            debugLog('Handling initial load');
-
-            const hash = window.location.hash.substring(1);
-            debugLog('Initial hash', { hash });
-
-            if (hash) {
-                showSection(hash);
+      // Handle initial page load
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        showSection(hash);
+      } else {
+        const sections = document.querySelectorAll('main section');
+        if (sections.length > 0) {
+          const firstSectionId = sections[0].id;
+          if (firstSectionId) {
+            showSection(firstSectionId);
+            if (history.replaceState) {
+              history.replaceState(null, null, '#' + firstSectionId);
             } else {
-                const sections = document.querySelectorAll('main section');
-                debugLog('No hash found, searching for default section', {
-                    totalSections: sections.length
-                });
-
-                if (sections.length > 0) {
-                    const dashboardSection = document.getElementById('dashboard');
-                    if (dashboardSection) {
-                        debugLog('Found dashboard section', { id: 'dashboard' });
-                        showSection('dashboard');
-                        if (history.replaceState) {
-                            history.replaceState(null, null, '#dashboard');
-                        } else {
-                            window.location.hash = 'dashboard';
-                        }
-                    } else {
-                        const firstSectionId = sections[0].id;
-                        if (firstSectionId) {
-                            debugLog('Using first section', { id: firstSectionId });
-                            showSection(firstSectionId);
-                            if (history.replaceState) {
-                                history.replaceState(null, null, '#' + firstSectionId);
-                            } else {
-                                window.location.hash = firstSectionId;
-                            }
-                        }
-                    }
-                }
+              window.location.hash = firstSectionId;
             }
+          }
         }
-
-        // Set up delegation for navigation clicks
-        document.addEventListener('click', function (event) {
-            let targetElement = event.target.closest('a');
-
-            if (targetElement && targetElement.getAttribute('href') && targetElement.getAttribute('href').startsWith('#')) {
-                const sectionId = targetElement.getAttribute('href').substring(1);
-                debugLog('Navigation click', {
-                    href: targetElement.getAttribute('href'),
-                    sectionId
-                });
-
-                if (sectionId) {
-                    const targetSection = document.getElementById(sectionId);
-                    if (targetSection) {
-                        event.preventDefault();
-                        window.location.hash = sectionId;
-                        showSection(sectionId);
-                    } else {
-                        debugLog('Target section not found for click', { sectionId });
-                    }
-                }
-            }
-        });
-
-        // Initial setup
-        debugLog('Starting initial setup');
-        const allSections = document.querySelectorAll('main section');
-        debugLog('Initial sections state', {
-            totalSections: allSections.length,
-            sectionIds: Array.from(allSections).map(s => s.id)
-        });
-
-        allSections.forEach((section, index) => {
-            section.style.display = index === 0 ? 'block' : 'none';
-            debugLog('Setting initial section visibility', {
-                id: section.id,
-                index,
-                display: index === 0 ? 'block' : 'none'
-            });
-        });
-
-        handleInitialLoad();
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            renderPosts();
-
-            document.addEventListener("click", function (e) {
-                if (e.target.closest(".comment-btn")) {
-                    const btn = e.target.closest(".comment-btn");
-                    const postId = btn.getAttribute("data-post-id");
-                    const commentSection = document.getElementById(`comments-${postId}`);
-                    const post = posts.find(p => p.id == postId);
-
-                    if (commentSection.classList.contains("hidden")) {
-                        commentSection.innerHTML = getMockCommentsHTML(post);
-                        commentSection.classList.remove("hidden");
-                        btn.classList.add("text-indigo-600");
-                        btn.classList.remove("text-gray-500");
-                    } else {
-                        commentSection.classList.add("hidden");
-                        btn.classList.remove("text-indigo-600");
-                        btn.classList.add("text-gray-500");
-                    }
-                }
-            });
-
-            document.addEventListener('click', function (e) {
-                const button = e.target.closest('.like-button');
-                if (!button) return;
-
-                const icon = button.querySelector('i');
-                const likeCountSpan = button.querySelector('span');
-                const isLiked = icon.classList.contains('liked');
-
-                let likeCount = parseInt(likeCountSpan.textContent, 10) || 0;
-
-                if (isLiked) {
-                    icon.classList.remove('liked', 'text-pink-500');
-                    likeCount = Math.max(0, likeCount - 1);
-                } else {
-                    icon.classList.add('liked', 'text-pink-500', 'scale-150');
-                    likeCount += 1;
-
-                    setTimeout(() => {
-                        icon.classList.remove('scale-150');
-                    }, 300);
-                }
-
-                likeCountSpan.textContent = likeCount;
-            });
-        });
-
-
-    </script>
-    <svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1"
-        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev"
-        style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;">
-        <defs id="SvgjsDefs1002"></defs>
-        <polyline id="SvgjsPolyline1003" points="0,0"></polyline>
-        <path id="SvgjsPath1004" d="M0 0 "></path>
-    </svg>
+      }
+    });
+  </script>
 </body>
 
 </html>
