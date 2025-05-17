@@ -182,7 +182,7 @@ function renderPosts() {
 
 function getMockCommentsHTML(post) {
     const totalComments = countAllComments(post.comments);
-    function renderComments(comments) {
+    function renderComments(comments, postId) {
         return `
         <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
             <div class="border-b border-gray-200 px-6 py-4 bg-gray-50">
@@ -224,6 +224,13 @@ function getMockCommentsHTML(post) {
                         </div>
                     </div>
                 `).join('')}
+                <div class="comment-input-box">
+                    <textarea rows="3" class="w-full p-2 text-sm border border-gray-300 rounded-md" placeholder="Write a comment..."></textarea>
+                    <button type="button" class="submit-comment mt-2 px-3 py-1 bg-indigo-600 text-white text-sm rounded-md hover:bg-indigo-700 transition-all"
+                            data-post-id="${postId}">
+                        Post Comment
+                    </button>
+                </div>
             </div>
         </div>
         `;
@@ -264,5 +271,110 @@ function getMockCommentsHTML(post) {
         `).join('');
     }
 
-    return renderComments(post.comments);
+    return renderComments(post.comments, post.id);
 }
+
+document.addEventListener('click', function (event) {
+    // Show reply box
+    if (event.target.closest('.reply-button')) {
+        const btn = event.target.closest('.reply-button');
+        const commentId = parseInt(btn.getAttribute('data-comment-id'));
+        const parent = btn.closest('.comment-container') || btn.closest('.ml-6');
+        
+        // Avoid duplicate boxes
+        if (parent.querySelector('.reply-box')) return;
+
+        const replyBoxHTML = `
+            <div class="reply-box mt-2">
+                <textarea rows="2" class="w-full p-2 text-sm border border-gray-300 rounded-md" placeholder="Write your reply..."></textarea>
+                <button type="button" class="submit-reply mt-2 px-3 py-1 bg-indigo-600 text-white text-sm rounded-md hover:bg-indigo-700 transition-all"
+                        data-comment-id="${commentId}">
+                    Post Reply
+                </button>
+            </div>
+        `;
+        parent.insertAdjacentHTML('beforeend', replyBoxHTML);
+    }
+
+    // Submit reply
+    if (event.target.classList.contains('submit-reply')) {
+        const btn = event.target;
+        const commentId = parseInt(btn.getAttribute('data-comment-id'));
+        const textarea = btn.previousElementSibling;
+        const content = textarea.value.trim();
+        if (!content) return;
+
+        const newReply = {
+            id: Date.now(),
+            user: "Nihal Awasthi", // Replace with logged-in user dynamically
+            initials: "ME",
+            gradient: "from-gray-400 to-black",
+            content: content,
+            time: "Just now",
+            likes: 0,
+            replies: []
+        };
+
+        // Add reply to the correct comment
+        posts.forEach(post => {
+            function addReplyRecursive(comments) {
+                for (let comment of comments) {
+                    if (comment.id === commentId) {
+                        if (!comment.replies) comment.replies = [];
+                        comment.replies.push(newReply);
+                        return true;
+                    } else if (comment.replies && comment.replies.length > 0) {
+                        if (addReplyRecursive(comment.replies)) return true;
+                    }
+                }
+                return false;
+            }
+            addReplyRecursive(post.comments);
+        });
+
+        // Re-render comments for that post
+        const postId = posts.find(post =>
+            post.comments.some(c => findCommentRecursive(c, commentId))
+        )?.id;
+
+        function findCommentRecursive(comment, id) {
+            if (comment.id === id) return true;
+            return comment.replies?.some(r => findCommentRecursive(r, id));
+        }
+
+        const commentsDiv = document.getElementById(`comments-${postId}`);
+        const post = posts.find(p => p.id === postId);
+        commentsDiv.innerHTML = getMockCommentsHTML(post);
+    }
+});
+
+document.addEventListener('click', function (event) {
+    // ... existing reply logic
+
+    // Handle new comment posting
+    if (event.target.classList.contains('submit-comment')) {
+        const btn = event.target;
+        const postId = parseInt(btn.getAttribute('data-post-id'));
+        const textarea = btn.previousElementSibling;
+        const content = textarea.value.trim();
+        if (!content) return;
+
+        const newComment = {
+            id: Date.now(),
+            user: "Nihal Awasthi", // Replace dynamically
+            initials: "ME",
+            gradient: "from-gray-400 to-black",
+            content: content,
+            time: "Just now",
+            likes: 0,
+            replies: []
+        };
+
+        const post = posts.find(p => p.id === postId);
+        if (!post.comments) post.comments = [];
+        post.comments.push(newComment);
+
+        const commentsDiv = document.getElementById(`comments-${postId}`);
+        commentsDiv.innerHTML = getMockCommentsHTML(post);
+    }
+});
