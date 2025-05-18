@@ -58,7 +58,6 @@
 ## 👨‍💻 Developer
 
 - **Nihal Awasthi**  
-  Hackathon Winner — Code Circuit 2025 🏆  
   [@nihalawasthi](https://github.com/nihalawasthi)
 
 ---
